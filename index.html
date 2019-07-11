@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html>
     <head>
             <meta charset="UTF-8"/>
@@ -7,68 +7,13 @@
         </title>
         <link rel="stylesheet" href="./css/style.css">
     </head>
-    <body>
-        <div class="header">
-            <div class="item"><h1>NEWSFEED</h1></div>
-            <div class="item"><p><i>Yet another newsfeed</i></p></div>
-        </div>
-        <div class="main">
-            <div class="left">
-                <div class="tile">
-                    <div class="image">
-                        <img src="./pic.png" alt="">
-                    </div>
-                    <div class="info">
-                        <h1>Title One</h1>
-                        <h5><span class="gray-text">Posted on</span> 29 June, 2019 <span class="gray-text"><i>// Category:</i></span> Category One</h5>
-                        <p>Writers write descriptive paragraphs because their purpose is to describe something. Their point is that something is beautiful or disgusting or strangely intriguing. Writers write persuasive and argument paragraphs because their purpose is to persuade or convince someone.</p>
-                        <button onclick="#">Continue Reading</button>
-                    </div>
-                </div>
-                <div class="tile">
-                    <div class="image">
-                        <img src="./pic.png" alt="">
-                    </div>
-                    <div class="info">
-                        <h1>Title Two</h1>
-                        <h5><span class="gray-text">Posted on</span> 22 June, 2019 <span class="gray-text"><i>// Category:</i></span> Category Two</h5>
-                        <p>Writers write descriptive paragraphs because their purpose is to describe something. Their point is that something is beautiful or disgusting or strangely intriguing. Writers write persuasive and argument paragraphs because their purpose is to persuade or convince someone.</p>
-                        <button onclick="#">Continue Reading</button>
-                     </div>
-                </div>
-                <div class="tile">
-                    <div class="image">
-                        <img src="./pic.png" alt="">
-                    </div>
-                    <div class="info">
-                        <h1>Title Three</h1>
-                        <h5><span class="gray-text">Posted on</span> 20 June, 2019 <span class="gray-text"><i>// Category:</i></span> Category Three</h5>
-                        <p>Writers write descriptive paragraphs because their purpose is to describe something. Their point is that something is beautiful or disgusting or strangely intriguing. Writers write persuasive and argument paragraphs because their purpose is to persuade or convince someone.</p>
-                        <button onclick="#">Continue Reading</button>
-                    </div>
-                </div>
-                <div class="tile">
-                    <div class="image">
-                        <img src="./pic.png" alt="">
-                    </div>
-                    <div class="info">
-                        <h1>Title Four</h1>
-                        <h5><span class="gray-text">Posted on</span> 18 June, 2019 <span class="gray-text"><i>// Category:</i></span> Category Four</h5>
-                        <p>Writers write descriptive paragraphs because their purpose is to describe something. Their point is that something is beautiful or disgusting or strangely intriguing. Writers write persuasive and argument paragraphs because their purpose is to persuade or convince someone.</p>
-                        <button onclick="#">Continue Reading</button>
-                    </div>
-                </div>           
-            </div>
-            <div class="right">
-                <b>SELECT CATEGORY</b><br>
-                <select>
-                    <option>&nbsp;&nbsp;All</option>
-                    <option>&nbsp;&nbsp;Other</option>
-                </select><br><br>
-                <b>SUBSCRIBE</b><br>
-                <input type="text" placeholder="&nbsp;&nbsp;Email Address"><button><b>Subscribe</b></button>
-            </div>
-        </div>
-        <div class="footer">&copy; NewsFeed 2019</div>
+    <body onload="startFunction()">
+        
+        <header id="myHeader"></header>
+        <main id="main"></main>
+        <footer id="myFooter"></footer>
+        <script src="./script/script.js"></script>
+        
+
     </body>
 </html>
