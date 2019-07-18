@@ -28,7 +28,7 @@ function load(){
     modalContent.appendChild(modalBody);
     modal.appendChild(modalContent);
     //header
-    var header=document.createElement("header");
+    let header=document.createElement("header");
     var h1=document.createElement("h1");
     var p=document.createElement("p");
     var i=document.createElement("i");
@@ -39,9 +39,9 @@ function load(){
     header.appendChild(p);
     document.body.appendChild(modal);
     //main
-    var main=document.createElement("main");
+    let main=document.createElement("main");
         //left block
-        var left=document.createElement("div");
+        let left=document.createElement("div");
         left.setAttribute("class","left");
         var i=0;
         var titles=['India Today','NDTV 24x7','Mirror Now','CNBC TV18','NDTV 24x7','Mirror Now','India Today','Mirror Now','NDTV 24x7','CNBC TV18'];
@@ -62,15 +62,15 @@ function load(){
         h1.appendChild(document.createTextNode(title));
         info.appendChild(h1);
         var h5=document.createElement("h5");
-        var graytext=document.createElement("span");
-        graytext.setAttribute("class","grayText");
-        graytext.appendChild(document.createTextNode("Posted on"));
-        h5.appendChild(graytext);
+        var grayText=document.createElement("span");
+        grayText.setAttribute("class","grayText");
+        grayText.appendChild(document.createTextNode("Posted on"));
+        h5.appendChild(grayText);
         h5.appendChild(document.createTextNode(" 29 June, 2019 "));
-        var graytext=document.createElement("span");
-        graytext.setAttribute("class","grayText");
-        graytext.appendChild(document.createElement("i").appendChild(document.createTextNode("// Category:")));
-        h5.appendChild(graytext);
+        var grayText=document.createElement("span");
+        grayText.setAttribute("class","grayText");
+        grayText.appendChild(document.createElement("i").appendChild(document.createTextNode("// Category:")));
+        h5.appendChild(grayText);
         h5.appendChild(document.createTextNode(" Category One"));
         info.appendChild(h5);
         var p=document.createElement("p");
@@ -87,7 +87,7 @@ function load(){
         left.appendChild(fragment);
         main.appendChild(left);
         //right block
-        var right=document.createElement("div");
+        let right=document.createElement("div");
         right.setAttribute("class","right");
         var b=document.createElement("b");
         b.appendChild(document.createTextNode("SELECT CATEGORY"));
@@ -139,7 +139,7 @@ function load(){
         right.appendChild(message2);
         main.appendChild(right);
     //footer
-    var footer=document.createElement("footer");
+    let footer=document.createElement("footer");
     var small=document.createElement("small");
     var text=document.createTextNode("\u00A9 NewsFeed 2019");
     small.appendChild(text);
