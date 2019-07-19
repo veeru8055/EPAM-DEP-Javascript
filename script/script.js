@@ -1,3 +1,4 @@
+var channel="abc-news-au";
 function load(){
     //popup modal
     var modal=document.createElement("div");
@@ -43,30 +44,40 @@ function load(){
         //left block
         let left=document.createElement("div");
         left.setAttribute("class","left");
+        let innerLeft=document.createElement("div");
+        innerLeft.setAttribute("class","innerLeft");
+        innerLeft.setAttribute("id","innerLeft");
         var i=0;
-        var titles=['India Today','NDTV 24x7','Mirror Now','CNBC TV18','NDTV 24x7','Mirror Now','India Today','Mirror Now','NDTV 24x7','CNBC TV18'];
-        var fragment=document.createDocumentFragment();
-        titles.forEach(function(title){
-        var tile=document.createElement("div");
+        fetch(`https://newsapi.org/v1/articles?source=${channel}&apiKey=38bdf22d077e45dcbdd9bbf51d0cf880`)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+      titles=myJson.articles;
+        let fragment=document.createDocumentFragment();
+        titles.forEach(function(value){
+        let tile=document.createElement("div");
         tile.setAttribute("class","tile");
-        var image=document.createElement("div");
+        let image=document.createElement("div");
         image.setAttribute("class","image");
-        var img=document.createElement("img");
-        img.setAttribute("src","./pic.png");
+        let img=document.createElement("img");
+        img.setAttribute("src",value.urlToImage);
         image.appendChild(img);
         tile.appendChild(image);
-        var info=document.createElement("div");
+        let info=document.createElement("div");
         info.setAttribute("class","info");
         info.setAttribute("id",i);
         var h1=document.createElement("h1");
-        h1.appendChild(document.createTextNode(title));
+        h1.appendChild(document.createTextNode(value.title));
         info.appendChild(h1);
         var h5=document.createElement("h5");
         var grayText=document.createElement("span");
         grayText.setAttribute("class","grayText");
-        grayText.appendChild(document.createTextNode("Posted on"));
+        grayText.appendChild(document.createTextNode("Posted on "));
         h5.appendChild(grayText);
-        h5.appendChild(document.createTextNode(" 29 June, 2019 "));
+        var published=new Date(value.publishedAt);
+        const months = ["January", "February", "March","April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        h5.appendChild(document.createTextNode(published.getDate()+" "+months[published.getMonth()]+", "+published.getFullYear()));
         var grayText=document.createElement("span");
         grayText.setAttribute("class","grayText");
         grayText.appendChild(document.createElement("i").appendChild(document.createTextNode("// Category:")));
@@ -74,7 +85,7 @@ function load(){
         h5.appendChild(document.createTextNode(" Category One"));
         info.appendChild(h5);
         var p=document.createElement("p");
-        p.appendChild(document.createTextNode("Writers write descriptive paragraphs because their purpose is to describe something. Their point is that something is beautiful or disgusting or strangely intriguing. Writers write persuasive and argument paragraphs because their purpose is to persuade or convince someone."));
+        p.appendChild(document.createTextNode(value.description));
         info.appendChild(p);
         var button=document.createElement("button");
         button.setAttribute("onclick","details("+i+")");
@@ -84,8 +95,11 @@ function load(){
         tile.appendChild(info);
         fragment.appendChild(tile);
         })
-        left.appendChild(fragment);
+        innerLeft.appendChild(fragment);
+        left.appendChild(innerLeft);
+    });
         main.appendChild(left);
+    
         //right block
         let right=document.createElement("div");
         right.setAttribute("class","right");
@@ -97,15 +111,20 @@ function load(){
         select.setAttribute("onChange","optionSelect()");
         select.setAttribute("id","mySelect");
         var option1=document.createElement("option");
-        option1.appendChild(document.createTextNode("All"));
+        option1.setAttribute("value","abc-news-au");
+        option1.appendChild(document.createTextNode("ABC News"));
         var option2=document.createElement("option");
-        option2.appendChild(document.createTextNode("India Today"));
+        option2.setAttribute("value","cnbc");
+        option2.appendChild(document.createTextNode("CNBC"));
         var option3=document.createElement("option");
-        option3.appendChild(document.createTextNode("NDTV 24x7"));
+        option3.setAttribute("value","daily-mail");
+        option3.appendChild(document.createTextNode("Daily Mail"));
         var option4=document.createElement("option");
-        option4.appendChild(document.createTextNode("Mirror Now"));
+        option4.setAttribute("value","mirror");
+        option4.appendChild(document.createTextNode("Mirror"));
         var option5=document.createElement("option");
-        option5.appendChild(document.createTextNode("CNBC TV18"));
+        option5.setAttribute("value","bbc-news");
+        option5.appendChild(document.createTextNode("BBC News"));
         select.appendChild(option1);
         select.appendChild(option2);
         select.appendChild(option3);
@@ -181,22 +200,65 @@ function storeEmail(){
 function optionSelect(){
     var index=document.getElementById("mySelect").selectedIndex;
     var option=document.getElementsByTagName("option")[index];
-    var selectedOption=option.text;
-    var tiles=document.getElementsByClassName("tile");
-    for(x=0;x<tiles.length;x++){
-        var title=tiles[x].getElementsByClassName("info")[0].getElementsByTagName("h1")[0].innerHTML;
-        if(selectedOption=="All"){
-            tiles[x].style.display="flex";
-        }
-        else{
-            if(title!=selectedOption){
-                tiles[x].style.display="none";
-            }
-            else{
-                tiles[x].style.display="flex";
-            }
-        }
-    }
+    var selectedOption=option.value;
+    channel=selectedOption;
+    let left=document.getElementsByClassName("left")[0];
+    let innerLeft1=document.getElementById("innerLeft");
+    left.removeChild(innerLeft1);
+    let innerLeft=document.createElement("div");
+        innerLeft.setAttribute("class","innerLeft");
+        innerLeft.setAttribute("id","innerLeft");
+    let i=0;
+        fetch(`https://newsapi.org/v1/articles?source=${channel}&apiKey=38bdf22d077e45dcbdd9bbf51d0cf880`)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+      titles=myJson.articles;
+        let fragment=document.createDocumentFragment();
+        titles.forEach(function(value){
+        let tile=document.createElement("div");
+        tile.setAttribute("class","tile");
+        let image=document.createElement("div");
+        image.setAttribute("class","image");
+        let img=document.createElement("img");
+        img.setAttribute("src",value.urlToImage);
+        image.appendChild(img);
+        tile.appendChild(image);
+        let info=document.createElement("div");
+        info.setAttribute("class","info");
+        info.setAttribute("id",i);
+        var h1=document.createElement("h1");
+        h1.appendChild(document.createTextNode(value.title));
+        info.appendChild(h1);
+        var h5=document.createElement("h5");
+        var grayText=document.createElement("span");
+        grayText.setAttribute("class","grayText");
+        grayText.appendChild(document.createTextNode("Posted on "));
+        h5.appendChild(grayText);
+        var published=new Date(value.publishedAt);
+        const months = ["January", "February", "March","April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        h5.appendChild(document.createTextNode(published.getDate()+" "+months[published.getMonth()]+", "+published.getFullYear()));
+        var grayText=document.createElement("span");
+        grayText.setAttribute("class","grayText");
+        grayText.appendChild(document.createElement("i").appendChild(document.createTextNode("// Category:")));
+        h5.appendChild(grayText);
+        h5.appendChild(document.createTextNode(" Category One"));
+        info.appendChild(h5);
+        var p=document.createElement("p");
+        p.appendChild(document.createTextNode(value.description));
+        info.appendChild(p);
+        var button=document.createElement("button");
+        button.setAttribute("onclick","details("+i+")");
+        i++;
+        button.appendChild(document.createTextNode("Continue Reading"));
+        info.appendChild(button);
+        tile.appendChild(info);
+        fragment.appendChild(tile);
+        })
+        innerLeft.appendChild(fragment);
+        left.appendChild(innerLeft);
+    });
 }
 function details(tileId){
     modal=document.getElementById("myModal");
