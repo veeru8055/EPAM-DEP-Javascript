@@ -1,4 +1,4 @@
-class View {
+export class View {
     constructor(controller) {
         this._controller = controller;
         this._modal = this.createModal();
@@ -17,7 +17,9 @@ class View {
         modalHeader.setAttribute("class", "modal-header");
         var span = document.createElement("span");
         span.setAttribute("class", "close");
-        span.setAttribute("onclick", "closeModal()");
+        span.addEventListener("click", function() {
+            this._controller.closeModal();
+        }.bind(this), false);
         span.appendChild(document.createTextNode("\u00D7"));
         modalHeader.appendChild(span);
         var h2 = document.createElement("h2");
@@ -82,7 +84,9 @@ class View {
         right.appendChild(bold);
         right.appendChild(document.createElement("br"));
         let select = document.createElement("select");
-        select.setAttribute("onChange", "optionSelect()");
+        select.addEventListener("change", function() {
+            this._controller.optionSelect();
+        }.bind(this), false);
         select.setAttribute("id", "mySelect");
         let option1 = document.createElement("option");
         option1.setAttribute("value", "abc-news-au");
@@ -117,7 +121,9 @@ class View {
         input.setAttribute("id", "email");
         right.appendChild(input);
         var button = document.createElement("button");
-        button.setAttribute("onclick", "storeEmail()");
+        button.addEventListener("click", function() {
+            this._controller.storeEmail();
+        }.bind(this), false);
         var b = document.createElement("b");
         b.appendChild(document.createTextNode("Subscribe"));
         button.appendChild(b);
@@ -134,16 +140,3 @@ class View {
     }
 
 }
-
-let model = new Model();
-let controller = new Controller(model);
-let view = new View(controller);
-document.body.appendChild(view._modal);
-document.body.appendChild(view._header);
-document.body.appendChild(view._main);
-document.body.appendChild(view._footer);
-
-function optionSelect() {
-    controller.optionSelect();
-}
-
