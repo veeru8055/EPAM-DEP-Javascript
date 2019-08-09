@@ -8,29 +8,29 @@ export class View {
     }
 
     createModal() {
-        var modal = document.createElement("div");
+        let modal = document.createElement("div");
         modal.setAttribute("id", "myModal");
         modal.setAttribute("class", "modal");
-        var modalContent = document.createElement("div");
+        let modalContent = document.createElement("div");
         modalContent.setAttribute("class", "modal-content");
-        var modalHeader = document.createElement("div");
+        let modalHeader = document.createElement("div");
         modalHeader.setAttribute("class", "modal-header");
-        var span = document.createElement("span");
+        let span = document.createElement("span");
         span.setAttribute("class", "close");
         span.addEventListener("click", function() {
             this._controller.closeModal();
         }.bind(this), false);
         span.appendChild(document.createTextNode("\u00D7"));
         modalHeader.appendChild(span);
-        var h2 = document.createElement("h2");
+        let h2 = document.createElement("h2");
         h2.appendChild(document.createTextNode("Title"));
         modalHeader.appendChild(h2);
         modalContent.appendChild(modalHeader);
-        var modalBody = document.createElement("div");
+        let modalBody = document.createElement("div");
         modalBody.setAttribute("class", "modal-body");
-        var p1 = document.createElement("p");
+        let p1 = document.createElement("p");
         p1.appendChild(document.createTextNode("p1"));
-        var p2 = document.createElement("p");
+        let p2 = document.createElement("p");
         p2.appendChild(document.createTextNode("p2"));
         modalBody.appendChild(p1);
         modalBody.appendChild(p2);
@@ -45,18 +45,26 @@ export class View {
         let h1 = document.createElement("h1");
         let p = document.createElement("p");
         let i = document.createElement("i");
+        let button = document.createElement("button");
         i.appendChild(document.createTextNode("Yet another newsfeed"));
         p.appendChild(i);
         h1.appendChild(document.createTextNode("NEWSFEED"));
+        button.appendChild(document.createTextNode("Headlines"));
         header.appendChild(h1);
         header.appendChild(p);
+        button.addEventListener("click", function() {
+            import ("./headline.js").then(module => {
+                module.headlines();
+            });
+        }.bind(this), false);
+        header.appendChild(button);
         return header;
     }
 
     createFooter() {
         let footer = document.createElement("footer");
-        var small = document.createElement("small");
-        var text = document.createTextNode("\u00A9 NewsFeed 2019");
+        let small = document.createElement("small");
+        let text = document.createTextNode("\u00A9 NewsFeed 2019");
         small.appendChild(text);
         footer.appendChild(small);
         return footer;
@@ -111,28 +119,28 @@ export class View {
         right.appendChild(select);
         right.appendChild(document.createElement("br"));
         right.appendChild(document.createElement("br"));
-        var b = document.createElement("b");
+        let b = document.createElement("b");
         b.appendChild(document.createTextNode("SUBSCRIBE"));
         right.appendChild(b);
         right.appendChild(document.createElement("br"));
-        var input = document.createElement("input");
+        let input = document.createElement("input");
         input.setAttribute("type", "text");
         input.setAttribute("placeholder", "\xa0\xa0Email Address");
         input.setAttribute("id", "email");
         right.appendChild(input);
-        var button = document.createElement("button");
+        let button = document.createElement("button");
         button.addEventListener("click", function() {
             this._controller.storeEmail();
         }.bind(this), false);
-        var b = document.createElement("b");
+        b = document.createElement("b");
         b.appendChild(document.createTextNode("Subscribe"));
         button.appendChild(b);
         right.appendChild(button);
-        var message = document.createElement("div");
+        let message = document.createElement("div");
         message.setAttribute("class", "message");
         message.setAttribute("id", "message");
         right.appendChild(message);
-        var message2 = document.createElement("div");
+        let message2 = document.createElement("div");
         message2.setAttribute("class", "message2");
         message2.setAttribute("id", "message2");
         right.appendChild(message2);

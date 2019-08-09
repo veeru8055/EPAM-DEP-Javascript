@@ -44,14 +44,8 @@ export class Controller {
         document.getElementById("myModal").style.display = "none";
     }
 
+
 }
-
-
-
-
-
-
-
 
 window.onclick = function(event) {
     let modal = document.getElementById("myModal");
