@@ -1,4 +1,8 @@
+
 export class View {
+
+class View {
+
     constructor(controller) {
         this._controller = controller;
         this._modal = this.createModal();
@@ -17,9 +21,13 @@ export class View {
         modalHeader.setAttribute("class", "modal-header");
         let span = document.createElement("span");
         span.setAttribute("class", "close");
+
         span.addEventListener("click", function() {
             this._controller.closeModal();
         }.bind(this), false);
+
+        span.setAttribute("onclick", "closeModal()");
+
         span.appendChild(document.createTextNode("\u00D7"));
         modalHeader.appendChild(span);
         let h2 = document.createElement("h2");
@@ -92,9 +100,13 @@ export class View {
         right.appendChild(bold);
         right.appendChild(document.createElement("br"));
         let select = document.createElement("select");
+
         select.addEventListener("change", function() {
             this._controller.optionSelect();
         }.bind(this), false);
+
+        select.setAttribute("onChange", "optionSelect()");
+
         select.setAttribute("id", "mySelect");
         let option1 = document.createElement("option");
         option1.setAttribute("value", "abc-news-au");
@@ -133,6 +145,15 @@ export class View {
             this._controller.storeEmail();
         }.bind(this), false);
         b = document.createElement("b");
+        var button = document.createElement("button");
+
+        button.addEventListener("click", function() {
+            this._controller.storeEmail();
+        }.bind(this), false);
+
+        button.setAttribute("onclick", "storeEmail()");
+
+        var b = document.createElement("b");
         b.appendChild(document.createTextNode("Subscribe"));
         button.appendChild(b);
         right.appendChild(button);
@@ -147,4 +168,21 @@ export class View {
         return right;
     }
 
+
 }
+
+}
+
+let model = new Model();
+let controller = new Controller(model);
+let view = new View(controller);
+document.body.appendChild(view._modal);
+document.body.appendChild(view._header);
+document.body.appendChild(view._main);
+document.body.appendChild(view._footer);
+
+function optionSelect() {
+    controller.optionSelect();
+}
+
+
