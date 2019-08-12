@@ -1,7 +1,8 @@
+
 let channel = "abc-news-au";
 export class Model {
     constructor() {}
-
+  
     createLeft() {
         let innerLeft = document.createElement("div");
         innerLeft.setAttribute("class", "innerLeft");
@@ -17,6 +18,7 @@ export class Model {
                 let fragment = document.createDocumentFragment();
                 titles.forEach(function(value) {
                     let j = i;
+
                     let tile = document.createElement("div");
                     tile.setAttribute("class", "tile");
                     let image = document.createElement("div");
@@ -48,10 +50,13 @@ export class Model {
                     let p = document.createElement("p");
                     p.appendChild(document.createTextNode(value.description));
                     info.appendChild(p);
+                  
                     let button = document.createElement("button");
+
                     button.addEventListener("click", function() {
                         this.details(j);
                     }.bind(this), false);
+
                     i++;
                     button.appendChild(document.createTextNode("Continue Reading"));
                     info.appendChild(button);
@@ -89,5 +94,4 @@ export class Model {
         body.getElementsByTagName("p")[1].innerHTML = p2.innerHTML;
         modal.style.display = "block";
     }
-
 }

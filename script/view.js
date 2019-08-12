@@ -146,5 +146,4 @@ export class View {
         right.appendChild(message2);
         return right;
     }
-
 }
