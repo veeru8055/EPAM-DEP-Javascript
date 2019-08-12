@@ -1,4 +1,5 @@
 const  HtmlWebpackPlugin  =  require('html-webpack-plugin')
+const  UglifyJSPlugin  =  require('uglifyjs-webpack-plugin'); 
 
 const config = {
     entry: './script/index.js',
@@ -24,7 +25,18 @@ const config = {
             filename:   'index.html',
             hash:  true
         })
-    ]
+    ],
+    optimization:  {
+        minimizer:  [
+            new  UglifyJSPlugin({
+                uglifyOptions:  {
+                    compress:  {
+                        drop_console:  true,
+                    }
+                }
+            })
+        ]
+    } 
 };
 
 module.exports = config;

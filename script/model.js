@@ -6,6 +6,7 @@ export class Model {
         let innerLeft = document.createElement("div");
         innerLeft.setAttribute("class", "innerLeft");
         innerLeft.setAttribute("id", "innerLeft");
+
         let i = 0;
         fetch(`https://newsapi.org/v1/articles?source=${channel}&apiKey=38bdf22d077e45dcbdd9bbf51d0cf880`)
             .then(function(response) {
@@ -56,6 +57,7 @@ export class Model {
                     info.appendChild(button);
                     tile.appendChild(info);
                     fragment.appendChild(tile);
+
                 }.bind(this))
                 innerLeft.appendChild(fragment);
             }.bind(this));
@@ -87,4 +89,5 @@ export class Model {
         body.getElementsByTagName("p")[1].innerHTML = p2.innerHTML;
         modal.style.display = "block";
     }
+
 }
