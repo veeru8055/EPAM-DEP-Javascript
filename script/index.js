@@ -9,3 +9,5 @@ document.body.appendChild(view._modal);
 document.body.appendChild(view._header);
 document.body.appendChild(view._main);
 document.body.appendChild(view._footer);
+
+console.log("test");
