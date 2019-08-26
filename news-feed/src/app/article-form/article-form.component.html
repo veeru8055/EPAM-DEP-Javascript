@@ -1,0 +1,27 @@
+<div class="tile">
+    <form>
+        <table>
+
+            <tr>
+                <th>Title:</th>
+                <td><input type="text" [(ngModel)]="article.title" name="title" required></td>
+            </tr>
+            <tr>
+                <th>Image URL:</th>
+                <td><input type="text" [(ngModel)]="article.urlToImage" name="url" required></td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td><textarea [(ngModel)]="article.description" name="description" cols="30" rows="10" required></textarea></td>
+            </tr>
+            <tr>
+                <th>
+                    <button (click)="addArticle()" type="submit"><b>Submit</b></button>
+                </th>
+                <td class="message">
+                    {{message}}
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

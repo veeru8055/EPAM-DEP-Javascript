@@ -1,0 +1,68 @@
+header {
+    text-align: center;
+    width: 100%;
+    background-color: rgb(204, 204, 204);
+}
+
+.top-head {
+    color: black;
+    display: flex;
+    background-color: grey;
+    height: auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.top-head .left {
+    display: flex;
+    height: 1.2em;
+    width: 48%;
+    padding-left: 2%
+}
+
+.top-head .left .logo {
+    width: 2em;
+    height: 100%;
+}
+
+.top-head .right {
+    width: 47%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.top-head .right .logout-button {
+    margin-left: 3%;
+}
+
+.bot-head {
+    color: black;
+    display: flex;
+    background-color: grey;
+    height: auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.bot-head select {
+    position: relative;
+    left: 2%;
+    width: 10%;
+}
+
+.bot-head .filter {
+    width: 15%;
+    overflow: hidden;
+    display: flex;
+    margin: auto;
+}
+
+.bot-head .filter input {
+    padding-left: 5%;
+    width: 95%;
+}
+
+.bot-head .article-button {
+    position: relative;
+    right: 3%;
+}

@@ -1,0 +1,23 @@
+<div class="main" *ngIf="currentPage=='tiles'">
+    <div *ngIf="newsData">
+        <div *ngFor="let data of newsData.articles">
+            <app-tiles *ngIf="data.title.toLowerCase().includes(filterData.toLowerCase()) || data.description.toLowerCase().includes(filterData.toLowerCase())" [title]="data.title" [description]="data.description" [imageUrl]="data.urlToImage" [date]="data.publishedAt"
+                (click)="showDetails(data.title, data.description, data.publishedAt, data.urlToImage)">
+            </app-tiles>
+        </div>
+    </div>
+    <div *ngIf="addedArticles.length">
+        <div *ngFor="let data of addedArticles">
+            <app-tiles *ngIf="newsData.source==data.source && (data.title.toLowerCase().includes(filterData.toLowerCase()) || data.description.toLowerCase().includes(filterData.toLowerCase()))" [title]="data.title" [description]="data.description" [imageUrl]="data.urlToImage"
+                [date]="data.publishedAt" (click)="showDetails(data.title, data.description, data.publishedAt, data.urlToImage)">
+            </app-tiles>
+        </div>
+
+    </div>
+</div>
+<div class="main" *ngIf="currentPage=='form'">
+    <app-article-form [source]="newsData.source" (saveArticle)="saveArticle($event)"></app-article-form>
+</div>
+<div class="main" *ngIf="currentPage=='details'">
+    <app-details [details]="clickedTileDetails" (openTiles)="showTiles()"></app-details>
+</div>

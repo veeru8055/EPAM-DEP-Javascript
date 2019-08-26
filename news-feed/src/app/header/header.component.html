@@ -1,0 +1,23 @@
+<header>
+    <div class="top-head">
+        <div class="left">
+            <div class="logo">
+                <img src="http://tineye.com/images/widgets/mona.jpg" height="100%" width="100%">
+            </div>
+        </div>
+        <div class="right">
+            <button class="logout-button">Log out</button>User Name
+        </div>
+    </div>
+    <h1>{{title}}</h1>
+    <div class="bot-head">
+        <select (change)="channelChanged($event.target)">
+            <option value="abc-news-au">ABC News AU</option>
+            <option value="bbc-sport">BBC Sports</option>
+        </select>
+        <div class="filter">
+            <input type="text" placeholder="Filter" [(ngModel)]="filterData" (ngModelChange)="filterSet.emit(filterData)">
+        </div>
+        <button class="article-button" (click)="openForm()">Add Article</button>
+    </div>
+</header>

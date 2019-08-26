@@ -1,0 +1,3 @@
+<app-header (channelChange)="generateData($event)" (formOpened)="formOpen($event)" (filterSet)="sendFilter($event)"></app-header>
+<app-main [newsData]="newsData" [currentPage]="currentPage" [filterData]="filterData" (details)="showDetails()" (showDetails)="showDetails()" (tiles)="showTiles()"> </app-main>
+<app-footer></app-footer>
