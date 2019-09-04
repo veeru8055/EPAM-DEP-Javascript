@@ -1,0 +1,31 @@
+<div class="tile">
+    <form [formGroup]="login" (ngSubmit)="onSubmit()">
+        <table>
+            <tr>
+                <th>
+                    UserName:
+                </th>
+                <td>
+                    <input type="text" formControlName="userName" (ngModelChange)="recheck()" required>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Password:
+                </th>
+                <td>
+                    <input type="password" formControlName="password" (ngModelChange)="recheck()" required>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <button type="submit" [disabled]="!login.valid">Submit</button>
+                </th>
+                <td class="message">
+                    {{message}}
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</div>

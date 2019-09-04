@@ -1,0 +1,7 @@
+<app-header>
+    <h1 *ngIf="router.url=='/dashboard' && newsService.title!=='All'">{{newsService.title}}</h1>
+    <h1 *ngIf="router.url=='/dashboard' && newsService.title==='All'">NewsFeed</h1>
+    <h1 *ngIf="router.url=='/login'">Login</h1>
+</app-header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
