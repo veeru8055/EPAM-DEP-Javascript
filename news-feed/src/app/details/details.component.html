@@ -14,11 +14,14 @@
         </div>
         <div class="back-button">
             <div class="comments" (click)="expandComments($event)">
-                {{details.comments.length}} Comments
+                <b>{{details.comments.length}} Comments</b>
                 <div *ngIf="active">
+                    <div *ngIf="details.comments.length==0">
+                        <br> No comments... Be the first to post one!!
+                    </div>
                     <div *ngFor="let comment of details.comments">
                         <app-comment>
-                            <b>User:{{comment.user}} </b>
+                            <b>Comment By: {{comment.user}} </b>
                             <br>
                             <div class="gray-text">Posted on: {{comment.date | date: 'dd MMMM yyyy hh:mm'}}</div><br> "{{comment.comment}}"
 

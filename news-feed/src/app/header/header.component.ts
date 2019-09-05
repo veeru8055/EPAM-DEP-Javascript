@@ -44,4 +44,8 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  getUser() {
+    return localStorage.getItem("loginKey");
+  }
+
 }

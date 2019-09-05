@@ -64,9 +64,9 @@
 }
 
 .tile .info .back-button #active {
-    margin-top: -5%;
+    margin-top: -10%;
     cursor: default;
-    height: 20%;
+    height: 30%;
     overflow: auto;
     position: absolute;
     width: 50%;

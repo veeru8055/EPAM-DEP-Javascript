@@ -16,7 +16,7 @@ export class ArticleFormComponent implements OnInit {
     urlToImage : "",
     description : "",
     publishedAt : new Date(),
-    
+    comments: []
   };
 
   constructor(private newsService: NewsService) { }

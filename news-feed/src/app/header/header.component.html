@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="right" *ngIf="router.url=='/dashboard'">
-            <button class="logout-button" (click)="logout()">Log out</button>User Name
+            <button class="logout-button" (click)="logout()">Log out</button>{{getUser()}}
         </div>
         <div class="right" *ngIf="router.url!='/dashboard'">
             Company Name
