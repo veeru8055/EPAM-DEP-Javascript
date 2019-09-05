@@ -1,0 +1,42 @@
+.tile {
+    border: none;
+    cursor: pointer;
+    display: flex;
+    width: 87%;
+    height: 10em;
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    background-color: rgb(204, 204, 204);
+    margin-top: 3%;
+    overflow: hidden;
+}
+
+.tile .image {
+    height: 100%;
+    width: 30%;
+}
+
+.tile .info {
+    padding-left: 2%;
+    padding-right: 1%;
+    width: 70%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.tile .info .title {
+    padding-top: 3%;
+    height: 35%;
+    overflow: hidden;
+}
+
+.tile .info .details {
+    height: 50%;
+    overflow: auto;
+}
+
+.tile:hover {
+    border: 2px solid black;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}

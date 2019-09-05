@@ -1,0 +1,19 @@
+<div class="tile">
+    <div class="image">
+        <img src="{{details.urlToImage}}" alt="Avatar" width=100% height=100%>
+    </div>
+    <div class="info">
+        <div class="title">
+            <b>{{details.title}}</b>
+        </div>
+        <div class="details">
+            <small><b>Posted on:</b> {{details.publishedAt | date: 'dd MMMM yyyy'}}
+            </small>
+            <br>
+            <br> {{details.description}}
+        </div>
+        <div class="back-button">
+            <button (click)="goBack()">Back</button>
+        </div>
+    </div>
+</div>
