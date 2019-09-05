@@ -1,0 +1,17 @@
+<div class="main" *ngIf="currentPage=='tiles'">
+    <div *ngFor="let data of newsService.getData()">
+        <div *ngIf="data.source==newsService.channel || newsService.channel=='all'">
+            <div *ngFor="let news of data.articles">
+                <app-tiles *ngIf="news.title.toLowerCase().includes(newsService.filterData.toLowerCase()) || news.description.toLowerCase().includes(newsService.filterData.toLowerCase())" [title]="news.title" [description]="news.description" [imageUrl]="news.urlToImage"
+                    [date]="news.publishedAt" (click)="showDetails(news.title, news.description, news.publishedAt, news.urlToImage)">
+                </app-tiles>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main" *ngIf="currentPage=='form'">
+    <app-article-form></app-article-form>
+</div>
+<div class="main" *ngIf="currentPage=='details'">
+    <app-details [details]="clickedTileDetails" (openTiles)="showTiles()"></app-details>
+</div>
