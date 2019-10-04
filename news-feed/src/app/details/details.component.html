@@ -1,0 +1,39 @@
+<div class="tile" (click)="closeComments()">
+    <div class="image">
+        <img src="{{details.urlToImage}}" alt="Avatar" width=100% height=100%>
+    </div>
+    <div class="info">
+        <div class="title">
+            <b>{{details.title}}</b>
+        </div>
+        <div class="details">
+            <small><b>Posted on:</b> {{details.publishedAt | date: 'dd MMMM yyyy'}}
+            </small>
+            <br>
+            <br> {{details.description}}
+        </div>
+        <div class="back-button">
+            <div class="comments" (click)="expandComments($event)">
+                {{details.comments.length}} Comments
+                <div *ngIf="active">
+                    <div *ngIf="details.comments.length==0" class="light">
+                        <br> No comments... Be the first to post one!!
+                    </div>
+                    <div *ngFor="let comment of details.comments">
+                        <app-comment>
+                            <b>Comment By: {{comment.user}} </b>
+                            <br>
+                            <div class="gray-text">Posted on: {{comment.date | date: 'dd MMMM yyyy hh:mm'}}</div><br> "{{comment.comment}}"
+
+                        </app-comment>
+                    </div>
+                    <div class="add-comment">
+                        <input type="text" [formControl]="comment" />
+                        <button class="post" (click)="addComment()" [disabled]="!comment.value">Post</button>
+                    </div>
+                </div>
+            </div>
+            <button (click)="goBack()">Back</button>
+        </div>
+    </div>
+</div>
